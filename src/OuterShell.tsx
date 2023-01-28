@@ -5,14 +5,13 @@ import MainLinks from './_mainlinks';
 import { Settings, Search, Photo, MessageCircle, Trash, ArrowsLeftRight } from 'tabler-icons-react'
 import { Outlet } from 'react-router-dom';
 
-// @ts-ignore
 import { callMsGraph } from './graph'
 import { loginRequest } from './authConfig'
 import { useMsal, useIsAuthenticated } from "@azure/msal-react";
 
 function ShowAccountSeal() {
   const { instance, accounts } = useMsal();
-  const [graphData, setGraphData] = useState(null);
+  const [graphData, setGraphData] = useState<null | {givenName: string, surname: string, userPrincipalName: string}>(null);
 
   useEffect(() => {
     console.log("entering useEffect");
